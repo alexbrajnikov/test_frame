@@ -11,3 +11,23 @@ def test_send_keys(method,locator,keys, wait_time =10):
         elif method == 'name':
             element = wdwait.until(expected_conditions.presence_of_element_located((By.NAME,locator)))
         element.send_keys(keys)
+        
+       
+def click_element_by_locator(locator, method='xpath', wait_time=10):
+    """click with explicit wait"""
+    try:
+        wdwait = WebDriverWait(driver, wait_time)
+        # elem = driver.find_element(xpath) - this is with implicit wait
+        element = object  # very general data type
+        if method == 'xpath':
+            element = wdwait.until(EC.presence_of_element_located((By.XPATH, locator)))
+        elif method == 'id':
+            element = wdwait.until(EC.presence_of_element_located((By.ID, locator)))
+        elif method == 'css':
+            element = wdwait.until(EC.presence_of_element_located((By.CSS_SELECTOR, locator)))
+        elif method = 'name':
+            element = wdwait.until(EC.presence_of_element_located((By.NAME, locator)))
+        element.click()
+    except (NoSuchElementException, TimeoutException) as err:
+        print('Error on click element by locator, check locator', locator)
+        print(err)
