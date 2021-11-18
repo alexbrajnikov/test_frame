@@ -35,7 +35,7 @@ def click_element_by_locator(method, locator, wait_time=10):
         print('Error on click element by locator, check locator', locator)
         print(err)
         
-def test_select drop down(metod,locator,way,value,wait_time=10):
+def test_select_drop_down(metod,locator,way,value,wait_time=10):
     try:
         wdwait = WebDriverWait(driver, wait_time)
         # elem = driver.find_element(xpath) - this is with implicit wait
