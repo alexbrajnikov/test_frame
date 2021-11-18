@@ -1,0 +1,13 @@
+def test_send_keys(method,locator,keys, wait_time =10):
+    try:
+        element = object
+        wdwait = WebDriverWait(driver,wait_time)
+        if method == 'xpath':
+            element = wdwait.until(expected_conditions.presence_of_element_located((By.XPATH,locator)))
+        elif method == 'css':
+            element = wdwait.until(expected_conditions.presence_of_element_located((By.CSS_SELECTOR,locator)))
+        elif method == 'id':
+            element = wdwait.until(expected_conditions.presence_of_element_located((By.ID,locator)))
+        elif method == 'name':
+            element = wdwait.until(expected_conditions.presence_of_element_located((By.NAME,locator)))
+        element.send_keys(keys)
