@@ -1,4 +1,4 @@
-def test_send_keys(method,locator,keys, wait_time =10):
+def send_keys(method,locator,keys, wait_time =10):
     try:
         element = object
         wdwait = WebDriverWait(driver,wait_time)
@@ -11,6 +11,8 @@ def test_send_keys(method,locator,keys, wait_time =10):
         elif method == 'name':
             element = wdwait.until(expected_conditions.presence_of_element_located((By.NAME,locator)))
         element.send_keys(keys)
+        elif method == 'link':
+            element = wdwait.until(expected_conditions.presence_of_element_located((By.LINK_TEXT,locator)))
     except (NoSuchElementException, TimeoutException) as err:
         print('Error on click element by locator, check locator', locator)
         print(err)
@@ -30,12 +32,14 @@ def click_element_by_locator(method, locator, wait_time=10):
             element = wdwait.until(EC.presence_of_element_located((By.CSS_SELECTOR, locator)))
         elif method = 'name':
             element = wdwait.until(EC.presence_of_element_located((By.NAME, locator)))
+        elif method == 'link':
+            element = wdwait.until(expected_conditions.presence_of_element_located((By.LINK_TEXT,locator)))
         element.click()
     except (NoSuchElementException, TimeoutException) as err:
         print('Error on click element by locator, check locator', locator)
         print(err)
         
-def test_select_drop_down(metod,locator,way,value,wait_time=10):
+def select_drop_down(metod,locator,way,value,wait_time=10):
     try:
         wdwait = WebDriverWait(driver, wait_time)
         # elem = driver.find_element(xpath) - this is with implicit wait
@@ -48,6 +52,8 @@ def test_select_drop_down(metod,locator,way,value,wait_time=10):
             element = Select(wdwait.until(EC.presence_of_element_located((By.CSS_SELECTOR, locator))))
         elif method = 'name':
             element = Select(wdwait.until(EC.presence_of_element_located((By.NAME, locator))))
+        elif method == 'link':
+            element = wdwait.until(expected_conditions.presence_of_element_located((By.LINK_TEXT,locator)))
         if way == 'value':
             element.select_by_value(value)
         elif way == 'text':
