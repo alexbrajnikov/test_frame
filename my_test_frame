@@ -64,3 +64,25 @@ def select_drop_down(metod,locator,way,value,wait_time=10):
     except (NoSuchElementException, TimeoutException) as err:
         print('Error on click element by locator, check locator', locator)
         print(err)
+        
+    def find_elements_by_locator(method, locator, wait_time=10):
+    """find with explicit wait"""
+    try:
+        wdwait = WebDriverWait(driver, wait_time)
+        # elem = driver.find_element(xpath) - this is with implicit wait
+        element = object  # very general data type
+        if method == 'xpath':
+            elements = wdwait.until(EC.presence_of_all_elements_located((By.XPATH, locator)))
+        elif method == 'id':
+            elements = wdwait.until(EC..presence_of_all_elements_located((By.ID, locator)))
+        elif method == 'css':
+            elements = wdwait.until(EC..presence_of_all_elements_located((By.CSS_SELECTOR, locator)))
+        elif method = 'name':
+            elements = wdwait.until(EC..presence_of_all_elements_located((By.NAME, locator)))
+        elif method == 'link':
+            elements = wdwait.until(expected_conditions.presence_of_element_located((By.LINK_TEXT,locator)))
+        return elements
+    except (NoSuchElementException, TimeoutException) as err:
+        print('Error on click element by locator, check locator', locator)
+        print(err)
+
