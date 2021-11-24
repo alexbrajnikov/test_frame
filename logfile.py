@@ -1,6 +1,6 @@
 import logging
 
-def test_logging():
+def get_logger():
     
     logger = logging.getLogger(__name__)
     fileHandler = logging.FileHandler('logfile.log')
