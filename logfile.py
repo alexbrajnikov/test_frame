@@ -8,3 +8,4 @@ def test_logging():
     fileHandler.setFormatter(formatter)
     logger.addHandler(fileHandler)
     logger.setLevel(logging.INFO)
+    return logger
